@@ -1,0 +1,916 @@
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Sep  6 12:14:15 2019] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-36) on 06 September 2019 02:55:06
+os: Linux-3.10.0-957.21.3.el7.x86_64 #1 SMP Tue Jun 18 16:35:19 UTC 2019
+nodename: cwx569032-ecs
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /opt
+writing pidfile to /opt/videoproject/uwsgi.pid
+detected binary path: /usr/local/python3/bin/uwsgi
+setgid() to 1002
+setuid() to 1001
+chdir() to /opt/videoproject
+your processes number limit is 3880
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uwsgi socket 0 bound to TCP address 127.0.0.1:9001 fd 3
+Python version: 3.7.0 (default, Sep  6 2019, 10:41:10)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+Python main interpreter initialized at 0x1a3a5c0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 299280 bytes (292 KB) for 4 cores
+*** Operational MODE: preforking+threaded ***
+===============install pymysql==============
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x1a3a5c0 pid: 10319 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 10319)
+spawned uWSGI worker 1 (pid: 10326, cores: 2)
+spawned uWSGI worker 2 (pid: 10327, cores: 2)
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 582, in connect
+    **kwargs)
+  File "/usr/local/python3/lib/python3.7/socket.py", line 727, in create_connection
+    raise err
+  File "/usr/local/python3/lib/python3.7/socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/mysql/base.py", line 227, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 327, in __init__
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 629, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '172.16.6.46' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "./video/views.py", line 19, in get_context_data
+    context = super(IndexView, self).get_context_data(**kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/list.py", line 119, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/list.py", line 69, in paginate_queryset
+    page = paginator.page(page_number)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 67, in page
+    number = self.validate_number(number)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 45, in validate_number
+    if number > self.num_pages:
+  File "/usr/local/python3/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 97, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "/usr/local/python3/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 87, in count
+    return self.object_list.count()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/query.py", line 383, in count
+    return self.query.get_count(using=self.db)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/sql/query.py", line 498, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/sql/query.py", line 483, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1063, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/mysql/base.py", line 227, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 327, in __init__
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 629, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '172.16.6.46' ([Errno 111] Connection refused)")
+[pid: 10326|app: 0|req: 1/1] 183.39.140.140 () {50 vars in 843 bytes} [Fri Sep  6 12:17:11 2019] GET / => generated 239731 bytes in 363 msecs (HTTP/1.1 500) 4 headers in 130 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 10327|app: 0|req: 1/2] 183.39.140.140 () {50 vars in 790 bytes} [Fri Sep  6 12:17:12 2019] GET /favicon.ico => generated 2644 bytes in 41 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 582, in connect
+    **kwargs)
+  File "/usr/local/python3/lib/python3.7/socket.py", line 727, in create_connection
+    raise err
+  File "/usr/local/python3/lib/python3.7/socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/mysql/base.py", line 227, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 327, in __init__
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 629, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '172.16.6.46' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "./video/views.py", line 19, in get_context_data
+    context = super(IndexView, self).get_context_data(**kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/list.py", line 119, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/list.py", line 69, in paginate_queryset
+    page = paginator.page(page_number)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 67, in page
+    number = self.validate_number(number)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 45, in validate_number
+    if number > self.num_pages:
+  File "/usr/local/python3/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 97, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "/usr/local/python3/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 87, in count
+    return self.object_list.count()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/query.py", line 383, in count
+    return self.query.get_count(using=self.db)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/sql/query.py", line 498, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/sql/query.py", line 483, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1063, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/mysql/base.py", line 227, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 327, in __init__
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 629, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '172.16.6.46' ([Errno 111] Connection refused)")
+[pid: 10326|app: 0|req: 2/3] 183.39.140.140 () {50 vars in 843 bytes} [Fri Sep  6 12:17:22 2019] GET / => generated 239731 bytes in 222 msecs (HTTP/1.1 500) 4 headers in 130 bytes (1 switches on core 1)
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 582, in connect
+    **kwargs)
+  File "/usr/local/python3/lib/python3.7/socket.py", line 727, in create_connection
+    raise err
+  File "/usr/local/python3/lib/python3.7/socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/mysql/base.py", line 227, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 327, in __init__
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 629, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '172.16.6.46' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "./video/views.py", line 19, in get_context_data
+    context = super(IndexView, self).get_context_data(**kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/list.py", line 119, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/views/generic/list.py", line 69, in paginate_queryset
+    page = paginator.page(page_number)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 67, in page
+    number = self.validate_number(number)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 45, in validate_number
+    if number > self.num_pages:
+  File "/usr/local/python3/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 97, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "/usr/local/python3/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/core/paginator.py", line 87, in count
+    return self.object_list.count()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/query.py", line 383, in count
+    return self.query.get_count(using=self.db)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/sql/query.py", line 498, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/sql/query.py", line 483, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1063, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/django/db/backends/mysql/base.py", line 227, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 327, in __init__
+    self.connect()
+  File "/usr/local/python3/lib/python3.7/site-packages/pymysql/connections.py", line 629, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '172.16.6.46' ([Errno 111] Connection refused)")
+[pid: 10327|app: 0|req: 2/4] 183.39.140.140 () {50 vars in 843 bytes} [Fri Sep  6 12:17:26 2019] GET / => generated 239731 bytes in 238 msecs (HTTP/1.1 500) 4 headers in 130 bytes (1 switches on core 1)
+[pid: 10326|app: 0|req: 3/5] 183.39.140.140 () {50 vars in 843 bytes} [Fri Sep  6 12:19:27 2019] GET / => generated 11706 bytes in 992 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+Not Found: /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg
+[pid: 10327|app: 0|req: 3/6] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:28 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 1885 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg
+[pid: 10326|app: 0|req: 4/7] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:29 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 1885 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 1)
+Not Found: /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg
+[pid: 10327|app: 0|req: 4/8] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:29 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 1885 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 1)
+Not Found: /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg
+[pid: 10326|app: 0|req: 5/9] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:29 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 1885 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg
+[pid: 10327|app: 0|req: 5/10] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:29 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 1885 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg
+[pid: 10326|app: 0|req: 6/11] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:29 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 1885 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 1)
+Not Found: /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg
+[pid: 10327|app: 0|req: 6/12] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:29 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 1885 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 1)
+Not Found: /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg
+[pid: 10326|app: 0|req: 7/13] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:29 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 1885 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg
+[pid: 10327|app: 0|req: 7/14] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:29 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 1885 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg
+[pid: 10326|app: 0|req: 8/15] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:29 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 1885 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 1)
+Not Found: /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg
+[pid: 10327|app: 0|req: 8/16] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:29 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 1885 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 1)
+Not Found: /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg
+[pid: 10326|app: 0|req: 9/17] 183.39.140.140 () {46 vars in 825 bytes} [Fri Sep  6 12:19:29 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 1885 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+...gracefully killing workers...
+Gracefully killing worker 1 (pid: 10326)...
+Gracefully killing worker 2 (pid: 10327)...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /opt
+closing all non-uwsgi socket fds > 2 (max_fd = 65535)...
+found fd 3 mapped to socket 0 (127.0.0.1:9001)
+running /usr/local/python3/bin/uwsgi
+[uWSGI] getting INI configuration from /opt/videoproject/uwsgi.ini
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Sep  6 12:25:15 2019] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-36) on 06 September 2019 02:55:06
+os: Linux-3.10.0-957.21.3.el7.x86_64 #1 SMP Tue Jun 18 16:35:19 UTC 2019
+nodename: cwx569032-ecs
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /opt
+detected binary path: /usr/local/python3/bin/uwsgi
+chdir() to /opt/videoproject
+your processes number limit is 3880
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uwsgi socket 0 inherited INET address 127.0.0.1:9001 fd 3
+Python version: 3.7.0 (default, Sep  6 2019, 10:41:10)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+Python main interpreter initialized at 0xded630
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 299280 bytes (292 KB) for 4 cores
+*** Operational MODE: preforking+threaded ***
+===============install pymysql==============
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0xded630 pid: 10319 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 10319)
+spawned uWSGI worker 1 (pid: 13792, cores: 2)
+spawned uWSGI worker 2 (pid: 13793, cores: 2)
+[pid: 13792|app: 0|req: 1/1] 183.39.140.140 () {52 vars in 961 bytes} [Fri Sep  6 12:25:42 2019] GET / => generated 11706 bytes in 1049 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+[pid: 13792|app: 0|req: 2/2] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 13793|app: 0|req: 1/3] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 27 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 13793|app: 0|req: 2/4] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 13792|app: 0|req: 3/5] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 25732 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 13792|app: 0|req: 4/6] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 13793|app: 0|req: 4/7] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 13793|app: 0|req: 4/8] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 13792|app: 0|req: 5/9] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 13792|app: 0|req: 6/10] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 13793|app: 0|req: 5/11] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 13793|app: 0|req: 6/12] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 13792|app: 0|req: 7/13] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:25:43 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 13792|app: 0|req: 8/14] 183.39.140.140 () {52 vars in 1005 bytes} [Fri Sep  6 12:25:47 2019] GET /video/detail/31/ => generated 6505 bytes in 10827 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 1)
+...brutally killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /opt
+closing all non-uwsgi socket fds > 2 (max_fd = 65535)...
+found fd 3 mapped to socket 0 (127.0.0.1:9001)
+running /usr/local/python3/bin/uwsgi
+[uWSGI] getting INI configuration from /opt/videoproject/uwsgi.ini
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Sep  6 12:26:12 2019] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-36) on 06 September 2019 02:55:06
+os: Linux-3.10.0-957.21.3.el7.x86_64 #1 SMP Tue Jun 18 16:35:19 UTC 2019
+nodename: cwx569032-ecs
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /opt
+detected binary path: /usr/local/python3/bin/uwsgi
+chdir() to /opt/videoproject
+your processes number limit is 3880
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uwsgi socket 0 inherited INET address 127.0.0.1:9001 fd 3
+Python version: 3.7.0 (default, Sep  6 2019, 10:41:10)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+Python main interpreter initialized at 0xe40630
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 299280 bytes (292 KB) for 4 cores
+*** Operational MODE: preforking+threaded ***
+===============install pymysql==============
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xe40630 pid: 10319 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 10319)
+spawned uWSGI worker 1 (pid: 14251, cores: 2)
+spawned uWSGI worker 2 (pid: 14252, cores: 2)
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Sep  6 12:29:02 2019] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-36) on 06 September 2019 02:55:06
+os: Linux-3.10.0-957.21.3.el7.x86_64 #1 SMP Tue Jun 18 16:35:19 UTC 2019
+nodename: cwx569032-ecs
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /opt
+writing pidfile to /opt/videoproject/uwsgi.pid
+detected binary path: /usr/local/python3/bin/uwsgi
+setgid() to 1002
+setuid() to 1001
+chdir() to /opt/videoproject
+your processes number limit is 3880
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uwsgi socket 0 bound to TCP address 127.0.0.1:9001 fd 3
+Python version: 3.7.0 (default, Sep  6 2019, 10:41:10)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+Python main interpreter initialized at 0x21965c0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 299280 bytes (292 KB) for 4 cores
+*** Operational MODE: preforking+threaded ***
+===============install pymysql==============
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x21965c0 pid: 4683 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 4683)
+spawned uWSGI worker 1 (pid: 4690, cores: 2)
+spawned uWSGI worker 2 (pid: 4691, cores: 2)
+[pid: 4690|app: 0|req: 1/1] 183.39.140.140 () {50 vars in 930 bytes} [Fri Sep  6 12:29:14 2019] GET / => generated 11706 bytes in 992 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+[pid: 4691|app: 0|req: 2/2] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 3/3] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 3/4] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 3/5] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 4/6] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 5/7] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 4/8] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 6/9] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 25732 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 7/10] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 5/11] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 9/12] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 9/13] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:15 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 6/14] 183.39.140.140 () {54 vars in 1029 bytes} [Fri Sep  6 12:29:06 2019] GET /video/detail/31/ => generated 6505 bytes in 10962 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 4691|app: 0|req: 6/15] 183.39.140.140 () {52 vars in 1005 bytes} [Fri Sep  6 12:29:17 2019] GET /video/detail/37/ => generated 6515 bytes in 702 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 1)
+[pid: 4690|app: 0|req: 10/16] 183.39.140.140 () {48 vars in 959 bytes} [Fri Sep  6 12:29:18 2019] GET /upload/cache/ee/3a/ee3a209d79e6ba0f77f90dc47ce0cb0c.jpg => generated 16926 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 11/17] 183.39.140.140 () {50 vars in 979 bytes} [Fri Sep  6 12:29:18 2019] GET /upload/chunked_uploads/2019/08/20/527ac2c25d4046bea14a01cc073896fa.part => generated 65100764 bytes in 97 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (13 switches on core 0)
+[pid: 4691|app: 0|req: 7/18] 183.39.140.140 () {50 vars in 997 bytes} [Fri Sep  6 12:29:18 2019] GET /comment/get_comments/?video_id=37&page=1&page_size=15 => generated 43 bytes in 345 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 4691|app: 0|req: 8/19] 183.39.140.140 () {52 vars in 989 bytes} [Fri Sep  6 12:29:29 2019] GET / => generated 11706 bytes in 743 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 1)
+[pid: 4690|app: 0|req: 12/20] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:30 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 13/21] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:30 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 9/22] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:30 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 10/23] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:30 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 14/24] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:30 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 15/25] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:30 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 11/26] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:30 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 12/27] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:30 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 16/28] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:29:30 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 17/29] 183.39.140.140 () {52 vars in 1005 bytes} [Fri Sep  6 12:29:32 2019] GET /video/detail/31/ => generated 6505 bytes in 707 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 4691|app: 0|req: 13/30] 183.39.140.140 () {50 vars in 979 bytes} [Fri Sep  6 12:29:33 2019] GET /upload/chunked_uploads/2019/08/20/60a67c43bfe84d9daadeddeb230c0ab8.part => generated 25918079 bytes in 24 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (4 switches on core 0)
+[pid: 4691|app: 0|req: 14/31] 183.39.140.140 () {50 vars in 997 bytes} [Fri Sep  6 12:29:33 2019] GET /comment/get_comments/?video_id=31&page=1&page_size=15 => generated 43 bytes in 10349 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 1)
+[pid: 4690|app: 0|req: 18/32] 172.16.6.81 () {44 vars in 758 bytes} [Fri Sep  6 12:32:45 2019] GET / => generated 11706 bytes in 431 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 1)
+[pid: 4690|app: 0|req: 19/33] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 15/34] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 16/35] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 20/36] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 21/37] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 17/38] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 18/39] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 22/40] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 23/41] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 19/42] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 25732 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 20/43] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 24/44] 172.16.6.81 () {42 vars in 761 bytes} [Fri Sep  6 12:32:46 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 25/45] 172.16.6.81 () {44 vars in 859 bytes} [Fri Sep  6 12:34:02 2019] GET /myadmin => generated 0 bytes in 0 msecs (HTTP/1.1 301) 3 headers in 114 bytes (1 switches on core 0)
+[pid: 4691|app: 0|req: 21/46] 172.16.6.81 () {44 vars in 861 bytes} [Fri Sep  6 12:34:02 2019] GET /myadmin/ => generated 0 bytes in 2 msecs (HTTP/1.1 302) 5 headers in 151 bytes (1 switches on core 0)
+[pid: 4691|app: 0|req: 22/47] 172.16.6.81 () {44 vars in 873 bytes} [Fri Sep  6 12:34:02 2019] GET /myadmin/login/ => generated 1999 bytes in 11 msecs (HTTP/1.1 200) 5 headers in 292 bytes (1 switches on core 1)
+Not Found: /favicon.ico
+[pid: 4690|app: 0|req: 26/48] 172.16.6.81 () {44 vars in 881 bytes} [Fri Sep  6 12:34:02 2019] GET /favicon.ico => generated 2646 bytes in 5 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 1)
+[pid: 4690|app: 0|req: 27/49] 172.16.6.81 () {54 vars in 1255 bytes} [Fri Sep  6 12:34:47 2019] POST /myadmin/login/ => generated 0 bytes in 1307 msecs (HTTP/1.1 302) 7 headers in 458 bytes (1 switches on core 0)
+[pid: 4691|app: 0|req: 24/50] 172.16.6.81 () {48 vars in 1064 bytes} [Fri Sep  6 12:34:58 2019] GET /myadmin/ => generated 4858 bytes in 613 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 1)
+[pid: 4691|app: 0|req: 24/51] 172.16.6.81 () {48 vars in 1064 bytes} [Fri Sep  6 12:34:49 2019] GET /myadmin/ => generated 4858 bytes in 10621 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 4690|app: 0|req: 28/52] 183.39.140.140 () {52 vars in 989 bytes} [Fri Sep  6 12:41:27 2019] GET / => generated 11706 bytes in 395 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 1)
+[pid: 4690|app: 0|req: 29/53] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:41:27 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 25/54] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:41:27 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4691|app: 0|req: 26/55] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:41:27 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4690|app: 0|req: 30/56] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:41:27 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 31/57] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:41:28 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 27/58] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:41:28 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4691|app: 0|req: 28/59] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:41:28 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4690|app: 0|req: 32/60] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:41:28 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4690|app: 0|req: 33/61] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 12:41:28 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4691|app: 0|req: 29/62] 183.39.140.140 () {52 vars in 1005 bytes} [Fri Sep  6 12:41:37 2019] GET /video/detail/37/ => generated 6515 bytes in 655 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 1)
+[pid: 4691|app: 0|req: 30/63] 183.39.140.140 () {48 vars in 959 bytes} [Fri Sep  6 12:41:38 2019] GET /upload/cache/ee/3a/ee3a209d79e6ba0f77f90dc47ce0cb0c.jpg => generated 16926 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4690|app: 0|req: 34/64] 183.39.140.140 () {50 vars in 979 bytes} [Fri Sep  6 12:41:38 2019] GET /upload/chunked_uploads/2019/08/20/527ac2c25d4046bea14a01cc073896fa.part => generated 65100764 bytes in 51 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (15 switches on core 1)
+[pid: 4691|app: 0|req: 31/65] 183.39.140.140 () {50 vars in 997 bytes} [Fri Sep  6 12:41:42 2019] GET /comment/get_comments/?video_id=37&page=2&page_size=15 => generated 43 bytes in 341 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 1)
+[pid: 4690|app: 0|req: 35/66] 183.39.140.140 () {50 vars in 997 bytes} [Fri Sep  6 12:41:38 2019] GET /comment/get_comments/?video_id=37&page=1&page_size=15 => generated 43 bytes in 10348 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 4691|app: 0|req: 32/67] 159.203.203.45 () {36 vars in 405 bytes} [Fri Sep  6 12:56:06 2019] GET / => generated 11706 bytes in 393 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+...brutally killing workers...
+[deadlock-detector] a process holding a robust mutex died. recovering...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /opt
+closing all non-uwsgi socket fds > 2 (max_fd = 65535)...
+found fd 3 mapped to socket 0 (127.0.0.1:9001)
+running /usr/local/python3/bin/uwsgi
+[uWSGI] getting INI configuration from /opt/videoproject/uwsgi.ini
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Sep  6 13:27:01 2019] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-36) on 06 September 2019 02:55:06
+os: Linux-3.10.0-957.21.3.el7.x86_64 #1 SMP Tue Jun 18 16:35:19 UTC 2019
+nodename: cwx569032-ecs
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /opt
+detected binary path: /usr/local/python3/bin/uwsgi
+chdir() to /opt/videoproject
+your processes number limit is 3880
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uwsgi socket 0 inherited INET address 127.0.0.1:9001 fd 3
+Python version: 3.7.0 (default, Sep  6 2019, 10:41:10)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+Python main interpreter initialized at 0xec9630
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 299280 bytes (292 KB) for 4 cores
+*** Operational MODE: preforking+threaded ***
+===============install pymysql==============
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0xec9630 pid: 4683 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 4683)
+spawned uWSGI worker 1 (pid: 25630, cores: 2)
+spawned uWSGI worker 2 (pid: 25631, cores: 2)
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Sep  6 14:11:08 2019] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-36) on 06 September 2019 02:55:06
+os: Linux-3.10.0-957.21.3.el7.x86_64 #1 SMP Tue Jun 18 16:35:19 UTC 2019
+nodename: cwx569032-ecs
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /root
+writing pidfile to /opt/videoproject/uwsgi.pid
+detected binary path: /usr/local/python3/bin/uwsgi
+setgid() to 1002
+setuid() to 1001
+chdir() to /opt/videoproject
+your processes number limit is 3880
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uwsgi socket 0 bound to TCP address 127.0.0.1:9001 fd 3
+Python version: 3.7.0 (default, Sep  6 2019, 10:41:10)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+Python main interpreter initialized at 0x12ed590
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 299280 bytes (292 KB) for 4 cores
+*** Operational MODE: preforking+threaded ***
+===============install pymysql==============
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x12ed590 pid: 4434 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 4434)
+spawned uWSGI worker 1 (pid: 4441, cores: 2)
+spawned uWSGI worker 2 (pid: 4442, cores: 2)
+[pid: 4442|app: 0|req: 1/1] 183.39.140.140 () {52 vars in 993 bytes} [Fri Sep  6 14:11:12 2019] GET /video/detail/37/ => generated 6515 bytes in 178 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 4442|app: 0|req: 2/2] 183.39.140.140 () {48 vars in 959 bytes} [Fri Sep  6 14:11:13 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 5 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 1/3] 183.39.140.140 () {48 vars in 959 bytes} [Fri Sep  6 14:11:13 2019] GET /upload/cache/ee/3a/ee3a209d79e6ba0f77f90dc47ce0cb0c.jpg => generated 16926 bytes in 25 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 2/4] 183.39.140.140 () {48 vars in 959 bytes} [Fri Sep  6 14:11:13 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 3/5] 183.39.140.140 () {48 vars in 959 bytes} [Fri Sep  6 14:11:13 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 25732 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 3/6] 183.39.140.140 () {50 vars in 997 bytes} [Fri Sep  6 14:11:13 2019] GET /comment/get_comments/?video_id=37&page=1&page_size=15 => generated 43 bytes in 426 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 4442|app: 0|req: 4/7] 183.39.140.140 () {50 vars in 979 bytes} [Fri Sep  6 14:11:13 2019] GET /upload/chunked_uploads/2019/08/20/527ac2c25d4046bea14a01cc073896fa.part => generated 65100764 bytes in 466 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (11 switches on core 1)
+[pid: 4441|app: 0|req: 4/8] 183.39.140.140 () {52 vars in 989 bytes} [Fri Sep  6 14:11:14 2019] GET / => generated 11706 bytes in 48 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 1)
+[pid: 4442|app: 0|req: 5/9] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 14:11:15 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 5/10] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 14:11:15 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 6/11] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 14:11:15 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 6/12] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 14:11:15 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 7/13] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 14:11:15 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 7/14] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 14:11:15 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 5 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 8/15] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 14:11:15 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 8/16] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 14:11:15 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 9/17] 183.39.140.140 () {48 vars in 943 bytes} [Fri Sep  6 14:11:15 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 9/18] 172.16.6.81 () {46 vars in 1049 bytes} [Fri Sep  6 14:49:24 2019] GET /myadmin/video_list/ => generated 0 bytes in 7 msecs (HTTP/1.1 302) 5 headers in 222 bytes (1 switches on core 0)
+[pid: 4442|app: 0|req: 10/19] 172.16.6.81 () {46 vars in 995 bytes} [Fri Sep  6 14:49:24 2019] GET /myadmin/login/ => generated 1999 bytes in 18 msecs (HTTP/1.1 200) 5 headers in 292 bytes (1 switches on core 1)
+[pid: 4441|app: 0|req: 10/20] 121.8.152.115 () {28 vars in 294 bytes} [Fri Sep  6 15:30:33 2019] GET / => generated 11706 bytes in 16 msecs (HTTP/1.0 200) 4 headers in 125 bytes (1 switches on core 1)
+[pid: 4442|app: 0|req: 11/21] 121.8.152.115 () {42 vars in 594 bytes} [Fri Sep  6 16:36:04 2019] GET / => generated 11706 bytes in 24 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+[pid: 4441|app: 0|req: 11/22] 183.39.140.140 () {44 vars in 742 bytes} [Fri Sep  6 21:17:50 2019] GET / => generated 11706 bytes in 15 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+[pid: 4442|app: 0|req: 12/23] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 12/24] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 13/25] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 13/26] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 14/27] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 14/28] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 15/29] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 15/30] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 16/31] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 16/32] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 25732 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 17/33] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 17/34] 183.39.140.140 () {42 vars in 776 bytes} [Fri Sep  6 21:17:51 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 18/35] 183.39.140.140 () {46 vars in 872 bytes} [Fri Sep  6 21:18:08 2019] GET /?c=3 => generated 6343 bytes in 15 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 1)
+[pid: 4441|app: 0|req: 18/36] 183.39.140.140 () {44 vars in 898 bytes} [Fri Sep  6 21:18:08 2019] GET /upload/cache/ab/be/abbedd6b71266354fcfb2f258f3f977d.jpg => generated 18437 bytes in 17 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 19/37] 183.39.140.140 () {44 vars in 898 bytes} [Fri Sep  6 21:18:08 2019] GET /upload/cache/fa/27/fa27321a570d6c325df8b3dea6adc88a.jpg => generated 35017 bytes in 9 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 19/38] 183.39.140.140 () {44 vars in 898 bytes} [Fri Sep  6 21:18:09 2019] GET /upload/cache/ee/3a/ee3a209d79e6ba0f77f90dc47ce0cb0c.jpg => generated 16926 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 20/39] 183.39.140.140 () {46 vars in 876 bytes} [Fri Sep  6 21:18:11 2019] GET /?c=4 => generated 9216 bytes in 15 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 1)
+[pid: 4441|app: 0|req: 20/40] 183.39.140.140 () {44 vars in 898 bytes} [Fri Sep  6 21:18:11 2019] GET /upload/cache/96/a5/96a5af99c7c20cff6b4e08f6a645efac.jpg => generated 14623 bytes in 7 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 21/41] 183.39.140.140 () {46 vars in 876 bytes} [Fri Sep  6 21:18:12 2019] GET /?c=3 => generated 6343 bytes in 13 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 4441|app: 0|req: 21/42] 183.39.140.140 () {46 vars in 901 bytes} [Fri Sep  6 21:18:38 2019] GET /video/detail/39/ => generated 6511 bytes in 20 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 4442|app: 0|req: 22/43] 183.39.140.140 () {44 vars in 910 bytes} [Fri Sep  6 21:18:38 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 22/44] 183.39.140.140 () {44 vars in 910 bytes} [Fri Sep  6 21:18:38 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 23/45] 183.39.140.140 () {46 vars in 951 bytes} [Fri Sep  6 21:18:39 2019] GET /comment/get_comments/?video_id=39&page=1&page_size=15 => generated 43 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 4442|app: 0|req: 23/46] 183.39.140.140 () {48 vars in 955 bytes} [Fri Sep  6 21:18:38 2019] GET /upload/chunked_uploads/2019/08/31/bec976c60a814a45af901fc629519054.part => generated 35117059 bytes in 210 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (4 switches on core 0)
+[pid: 4442|app: 0|req: 24/47] 183.39.140.140 () {46 vars in 876 bytes} [Fri Sep  6 21:18:52 2019] GET /?c=3 => generated 6344 bytes in 12 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 1)
+[pid: 4441|app: 0|req: 24/48] 183.39.140.140 () {44 vars in 898 bytes} [Fri Sep  6 21:18:52 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 25/49] 183.39.140.140 () {44 vars in 898 bytes} [Fri Sep  6 21:18:52 2019] GET /upload/cache/ab/be/abbedd6b71266354fcfb2f258f3f977d.jpg => generated 18437 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 25/50] 183.39.140.140 () {44 vars in 898 bytes} [Fri Sep  6 21:18:52 2019] GET /upload/cache/fa/27/fa27321a570d6c325df8b3dea6adc88a.jpg => generated 35017 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 26/51] 183.39.140.140 () {46 vars in 901 bytes} [Fri Sep  6 21:18:56 2019] GET /video/detail/20/ => generated 6517 bytes in 25 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 1)
+[pid: 4441|app: 0|req: 27/52] 183.39.140.140 () {46 vars in 951 bytes} [Fri Sep  6 21:18:56 2019] GET /comment/get_comments/?video_id=20&page=1&page_size=15 => generated 43 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 4441|app: 0|req: 27/53] 183.39.140.140 () {48 vars in 955 bytes} [Fri Sep  6 21:18:56 2019] GET /upload/chunked_uploads/2019/08/16/132a6d161bf341bf9483b94b195821f1.part => generated 21014968 bytes in 179 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (3 switches on core 1)
+[pid: 4442|app: 0|req: 27/54] 3.112.251.68 () {36 vars in 403 bytes} [Sat Sep  7 02:14:08 2019] GET / => generated 11707 bytes in 16 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+[pid: 4442|app: 0|req: 28/55] 128.14.134.170 () {36 vars in 499 bytes} [Sat Sep  7 03:30:08 2019] GET / => generated 11707 bytes in 17 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 1)
+[pid: 4441|app: 0|req: 28/56] 89.248.167.131 () {36 vars in 553 bytes} [Sat Sep  7 08:14:24 2019] GET / => generated 11707 bytes in 15 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+Not Found: /robots.txt
+[pid: 4441|app: 0|req: 29/57] 89.248.167.131 () {32 vars in 371 bytes} [Sat Sep  7 08:14:38 2019] GET /robots.txt => generated 2641 bytes in 4 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 1)
+Not Found: /sitemap.xml
+[pid: 4442|app: 0|req: 29/58] 89.248.167.131 () {32 vars in 373 bytes} [Sat Sep  7 08:14:40 2019] GET /sitemap.xml => generated 2644 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /.well-known/security.txt
+[pid: 4442|app: 0|req: 30/59] 89.248.167.131 () {32 vars in 399 bytes} [Sat Sep  7 08:14:42 2019] GET /.well-known/security.txt => generated 2683 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 1)
+Not Found: /favicon.ico
+[pid: 4441|app: 0|req: 30/60] 89.248.167.131 () {38 vars in 466 bytes} [Sat Sep  7 08:14:47 2019] GET /favicon.ico => generated 2644 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 4441|app: 0|req: 31/61] 196.52.43.128 () {32 vars in 444 bytes} [Sat Sep  7 10:45:06 2019] GET / => generated 11707 bytes in 16 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 1)
+[pid: 4442|app: 0|req: 31/62] 121.35.1.96 () {46 vars in 835 bytes} [Sat Sep  7 17:11:19 2019] GET /video/detail/20/ => generated 6517 bytes in 18 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 4442|app: 0|req: 32/63] 121.35.1.96 () {44 vars in 853 bytes} [Sat Sep  7 17:11:19 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 32/64] 121.35.1.96 () {44 vars in 853 bytes} [Sat Sep  7 17:11:19 2019] GET /upload/cache/ee/3a/ee3a209d79e6ba0f77f90dc47ce0cb0c.jpg => generated 16926 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 33/65] 121.35.1.96 () {44 vars in 853 bytes} [Sat Sep  7 17:11:19 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 33/66] 121.35.1.96 () {44 vars in 853 bytes} [Sat Sep  7 17:11:19 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 25732 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 34/67] 121.35.1.96 () {48 vars in 898 bytes} [Sat Sep  7 17:11:19 2019] GET /upload/chunked_uploads/2019/08/16/132a6d161bf341bf9483b94b195821f1.part => generated 21014968 bytes in 23 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (5 switches on core 1)
+[pid: 4441|app: 0|req: 34/68] 121.35.1.96 () {46 vars in 894 bytes} [Sat Sep  7 17:11:20 2019] GET /comment/get_comments/?video_id=20&page=1&page_size=15 => generated 43 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 4441|app: 0|req: 35/69] 121.35.1.96 () {44 vars in 770 bytes} [Sat Sep  7 17:11:54 2019] GET /video/detail/20/ => generated 6517 bytes in 26 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 1)
+[pid: 4442|app: 0|req: 35/70] 121.35.1.96 () {42 vars in 788 bytes} [Sat Sep  7 17:11:54 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 36/71] 121.35.1.96 () {42 vars in 788 bytes} [Sat Sep  7 17:11:55 2019] GET /upload/cache/ee/3a/ee3a209d79e6ba0f77f90dc47ce0cb0c.jpg => generated 16926 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 36/72] 121.35.1.96 () {42 vars in 788 bytes} [Sat Sep  7 17:11:55 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 37/73] 121.35.1.96 () {42 vars in 788 bytes} [Sat Sep  7 17:11:55 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 25732 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 37/74] 121.35.1.96 () {46 vars in 833 bytes} [Sat Sep  7 17:11:55 2019] GET /upload/chunked_uploads/2019/08/16/132a6d161bf341bf9483b94b195821f1.part => generated 21014968 bytes in 24 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (5 switches on core 0)
+[pid: 4442|app: 0|req: 38/75] 121.35.1.96 () {46 vars in 947 bytes} [Sat Sep  7 17:11:55 2019] GET /comment/get_comments/?video_id=20&page=1&page_size=15 => generated 43 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 1)
+[pid: 4441|app: 0|req: 38/76] 121.35.1.96 () {46 vars in 877 bytes} [Sat Sep  7 17:11:56 2019] GET / => generated 11707 bytes in 23 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+[pid: 4441|app: 0|req: 39/77] 121.35.1.96 () {44 vars in 890 bytes} [Sat Sep  7 17:11:56 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 39/78] 121.35.1.96 () {44 vars in 890 bytes} [Sat Sep  7 17:11:56 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 40/79] 121.35.1.96 () {44 vars in 890 bytes} [Sat Sep  7 17:11:56 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 40/80] 121.35.1.96 () {44 vars in 890 bytes} [Sat Sep  7 17:11:56 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 41/81] 121.35.1.96 () {44 vars in 890 bytes} [Sat Sep  7 17:11:56 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 41/82] 121.35.1.96 () {44 vars in 890 bytes} [Sat Sep  7 17:11:56 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 42/83] 121.35.1.96 () {44 vars in 890 bytes} [Sat Sep  7 17:11:56 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 42/84] 121.35.1.96 () {44 vars in 890 bytes} [Sat Sep  7 17:11:56 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 43/85] 121.35.1.96 () {44 vars in 890 bytes} [Sat Sep  7 17:11:56 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 43/86] 121.35.1.96 () {46 vars in 893 bytes} [Sat Sep  7 17:13:22 2019] GET /video/detail/37/ => generated 6515 bytes in 19 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 4442|app: 0|req: 44/87] 121.35.1.96 () {44 vars in 906 bytes} [Sat Sep  7 17:13:23 2019] GET /upload/cache/ee/3a/ee3a209d79e6ba0f77f90dc47ce0cb0c.jpg => generated 16926 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 44/88] 121.35.1.96 () {48 vars in 951 bytes} [Sat Sep  7 17:13:23 2019] GET /upload/chunked_uploads/2019/08/20/527ac2c25d4046bea14a01cc073896fa.part => generated 65100764 bytes in 62 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (15 switches on core 0)
+[pid: 4441|app: 0|req: 45/89] 121.35.1.96 () {46 vars in 947 bytes} [Sat Sep  7 17:13:23 2019] GET /comment/get_comments/?video_id=37&page=1&page_size=15 => generated 43 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 1)
+[pid: 4442|app: 0|req: 45/90] 121.35.1.96 () {46 vars in 930 bytes} [Sat Sep  7 17:14:16 2019] GET /upload/chunked_uploads/2019/08/20/527ac2c25d4046bea14a01cc073896fa.part => generated 65100764 bytes in 61 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (21 switches on core 0)
+[pid: 4442|app: 0|req: 46/91] 138.68.208.152 () {36 vars in 405 bytes} [Sat Sep  7 19:03:31 2019] GET / => generated 11707 bytes in 16 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 1)
+[pid: 4441|app: 0|req: 46/92] 183.39.160.101 () {46 vars in 844 bytes} [Sat Sep  7 20:00:39 2019] GET /video/detail/37/ => generated 6515 bytes in 22 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 4441|app: 0|req: 47/93] 183.39.160.101 () {44 vars in 857 bytes} [Sat Sep  7 20:00:39 2019] GET /upload/cache/ee/3a/ee3a209d79e6ba0f77f90dc47ce0cb0c.jpg => generated 16926 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 47/94] 183.39.160.101 () {44 vars in 857 bytes} [Sat Sep  7 20:00:39 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 48/95] 183.39.160.101 () {44 vars in 857 bytes} [Sat Sep  7 20:00:39 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 48/96] 183.39.160.101 () {44 vars in 857 bytes} [Sat Sep  7 20:00:39 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 25732 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 49/97] 183.39.160.101 () {48 vars in 902 bytes} [Sat Sep  7 20:00:39 2019] GET /upload/chunked_uploads/2019/08/20/527ac2c25d4046bea14a01cc073896fa.part => generated 65100764 bytes in 56 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (15 switches on core 1)
+[pid: 4442|app: 0|req: 49/98] 183.39.160.101 () {46 vars in 962 bytes} [Sat Sep  7 20:00:39 2019] GET /comment/get_comments/?video_id=37&page=1&page_size=15 => generated 43 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 4442|app: 0|req: 50/99] 183.39.160.101 () {46 vars in 892 bytes} [Sat Sep  7 20:00:41 2019] GET / => generated 11707 bytes in 16 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 1)
+[pid: 4441|app: 0|req: 50/100] 183.39.160.101 () {44 vars in 905 bytes} [Sat Sep  7 20:00:41 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 51/101] 183.39.160.101 () {44 vars in 905 bytes} [Sat Sep  7 20:00:41 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 51/102] 183.39.160.101 () {44 vars in 905 bytes} [Sat Sep  7 20:00:41 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 52/103] 183.39.160.101 () {44 vars in 905 bytes} [Sat Sep  7 20:00:41 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 52/104] 183.39.160.101 () {44 vars in 905 bytes} [Sat Sep  7 20:00:41 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 53/105] 183.39.160.101 () {44 vars in 905 bytes} [Sat Sep  7 20:00:41 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 53/106] 183.39.160.101 () {44 vars in 905 bytes} [Sat Sep  7 20:00:41 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 54/107] 183.39.160.101 () {44 vars in 905 bytes} [Sat Sep  7 20:00:41 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 54/108] 183.39.160.101 () {44 vars in 905 bytes} [Sat Sep  7 20:00:41 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 55/109] 183.39.160.101 () {46 vars in 908 bytes} [Sat Sep  7 20:00:51 2019] GET /video/detail/38/ => generated 6527 bytes in 23 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 1)
+[pid: 4442|app: 0|req: 55/110] 183.39.160.101 () {44 vars in 921 bytes} [Sat Sep  7 20:00:51 2019] GET /upload/cache/ee/3a/ee3a209d79e6ba0f77f90dc47ce0cb0c.jpg => generated 16926 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 56/111] 183.39.160.101 () {46 vars in 962 bytes} [Sat Sep  7 20:00:51 2019] GET /comment/get_comments/?video_id=38&page=1&page_size=15 => generated 43 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 4442|app: 0|req: 56/112] 183.39.160.101 () {48 vars in 966 bytes} [Sat Sep  7 20:00:51 2019] GET /upload/chunked_uploads/2019/08/20/0a5548e34b44441b818e5a0146a631d3.part => generated 28061330 bytes in 191 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (4 switches on core 1)
+[pid: 4441|app: 0|req: 57/113] 183.39.160.101 () {46 vars in 962 bytes} [Sat Sep  7 20:01:13 2019] GET /comment/get_comments/?video_id=38&page=2&page_size=15 => generated 43 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 1)
+[pid: 4442|app: 0|req: 57/114] 183.39.160.101 () {46 vars in 855 bytes} [Sat Sep  7 21:09:14 2019] GET /video/detail/38/ => generated 6527 bytes in 19 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 4441|app: 0|req: 58/115] 183.39.160.101 () {44 vars in 868 bytes} [Sat Sep  7 21:09:14 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4442|app: 0|req: 58/116] 183.39.160.101 () {44 vars in 868 bytes} [Sat Sep  7 21:09:14 2019] GET /upload/cache/ee/3a/ee3a209d79e6ba0f77f90dc47ce0cb0c.jpg => generated 16926 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4441|app: 0|req: 59/117] 183.39.160.101 () {44 vars in 868 bytes} [Sat Sep  7 21:09:14 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4442|app: 0|req: 59/118] 183.39.160.101 () {44 vars in 868 bytes} [Sat Sep  7 21:09:14 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 25732 bytes in 1 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4441|app: 0|req: 60/119] 183.39.160.101 () {48 vars in 913 bytes} [Sat Sep  7 21:09:14 2019] GET /upload/chunked_uploads/2019/08/20/0a5548e34b44441b818e5a0146a631d3.part => generated 28061330 bytes in 20 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (6 switches on core 0)
+[pid: 4442|app: 0|req: 60/120] 183.39.160.101 () {46 vars in 973 bytes} [Sat Sep  7 21:09:15 2019] GET /comment/get_comments/?video_id=38&page=1&page_size=15 => generated 43 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 1)
+[pid: 4441|app: 0|req: 61/121] 183.39.160.101 () {46 vars in 973 bytes} [Sat Sep  7 21:09:15 2019] GET /comment/get_comments/?video_id=38&page=2&page_size=15 => generated 43 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 1)
+[pid: 4442|app: 0|req: 61/122] 3.112.251.68 () {36 vars in 403 bytes} [Sun Sep  8 02:14:18 2019] GET / => generated 11707 bytes in 16 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+[pid: 4441|app: 0|req: 62/123] 216.218.206.69 () {30 vars in 319 bytes} [Sun Sep  8 09:30:59 2019] GET / => generated 11707 bytes in 15 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+Not Found: /Lists/admin.php
+[pid: 4442|app: 0|req: 62/124] 83.143.86.62 () {36 vars in 433 bytes} [Sun Sep  8 11:01:22 2019] GET /Lists/admin.php => generated 2656 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 1)
+Not Found: /admin.php
+[pid: 4441|app: 0|req: 63/125] 83.143.86.62 () {36 vars in 421 bytes} [Sun Sep  8 11:01:24 2019] GET /admin.php => generated 2638 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 1)
+...brutally killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /root
+uwsgi_reload()/chdir(): Permission denied [core/master_utils.c line 453]
+closing all non-uwsgi socket fds > 2 (max_fd = 65535)...
+found fd 3 mapped to socket 0 (127.0.0.1:9001)
+running /usr/local/python3/bin/uwsgi
+[uWSGI] getting INI configuration from /opt/videoproject/uwsgi.ini
+*** Starting uWSGI 2.0.18 (64bit) on [Sun Sep  8 11:55:14 2019] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-36) on 06 September 2019 02:55:06
+os: Linux-3.10.0-957.21.3.el7.x86_64 #1 SMP Tue Jun 18 16:35:19 UTC 2019
+nodename: cwx569032-ecs
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /opt/videoproject
+detected binary path: /usr/local/python3/bin/uwsgi
+chdir() to /opt/videoproject
+your processes number limit is 3880
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uwsgi socket 0 inherited INET address 127.0.0.1:9001 fd 3
+Python version: 3.7.0 (default, Sep  6 2019, 10:41:10)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+Python main interpreter initialized at 0xc08600
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 299280 bytes (292 KB) for 4 cores
+*** Operational MODE: preforking+threaded ***
+===============install pymysql==============
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0xc08600 pid: 4434 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 4434)
+spawned uWSGI worker 1 (pid: 23282, cores: 2)
+spawned uWSGI worker 2 (pid: 23283, cores: 2)
+*** Starting uWSGI 2.0.18 (64bit) on [Sat Sep 14 11:35:27 2019] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-36) on 06 September 2019 02:55:06
+os: Linux-3.10.0-957.21.3.el7.x86_64 #1 SMP Tue Jun 18 16:35:19 UTC 2019
+nodename: cwx569032-ecs
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /root
+writing pidfile to /opt/videoproject/uwsgi.pid
+detected binary path: /usr/local/python3/bin/uwsgi
+setgid() to 1002
+setuid() to 1001
+chdir() to /opt/videoproject
+your processes number limit is 3880
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uwsgi socket 0 bound to TCP address 127.0.0.1:9001 fd 3
+Python version: 3.7.0 (default, Sep  6 2019, 10:41:10)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+Python main interpreter initialized at 0x215b590
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 299280 bytes (292 KB) for 4 cores
+*** Operational MODE: preforking+threaded ***
+===============install pymysql==============
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x215b590 pid: 4461 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 4461)
+spawned uWSGI worker 1 (pid: 4468, cores: 2)
+spawned uWSGI worker 2 (pid: 4469, cores: 2)
+[pid: 4469|app: 0|req: 1/1] 106.8.70.65 () {52 vars in 904 bytes} [Sat Sep 14 11:38:14 2019] GET / => generated 11707 bytes in 196 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+[pid: 4468|app: 0|req: 1/2] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 55 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4469|app: 0|req: 3/3] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 7 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4468|app: 0|req: 2/4] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 8 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4469|app: 0|req: 3/5] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 5 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4468|app: 0|req: 3/6] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4469|app: 0|req: 4/7] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4468|app: 0|req: 4/8] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 25732 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4469|app: 0|req: 5/9] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4468|app: 0|req: 5/10] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4469|app: 0|req: 6/11] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4468|app: 0|req: 6/12] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4469|app: 0|req: 7/13] 106.8.70.65 () {48 vars in 886 bytes} [Sat Sep 14 11:38:15 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+*** Starting uWSGI 2.0.18 (64bit) on [Sat Sep 14 14:39:23 2019] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-36) on 06 September 2019 02:55:06
+os: Linux-3.10.0-957.21.3.el7.x86_64 #1 SMP Tue Jun 18 16:35:19 UTC 2019
+nodename: cwx790345-django
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /root
+writing pidfile to /opt/videoproject/uwsgi.pid
+detected binary path: /usr/local/python3/bin/uwsgi
+setgid() to 1002
+setuid() to 1001
+chdir() to /opt/videoproject
+your processes number limit is 3872
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uwsgi socket 0 bound to TCP address 127.0.0.1:9001 fd 3
+Python version: 3.7.0 (default, Sep  6 2019, 10:41:10)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+Python main interpreter initialized at 0x132d5a0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 299280 bytes (292 KB) for 4 cores
+*** Operational MODE: preforking+threaded ***
+===============install pymysql==============
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x132d5a0 pid: 4520 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 4520)
+spawned uWSGI worker 1 (pid: 4527, cores: 2)
+spawned uWSGI worker 2 (pid: 4528, cores: 2)
+[pid: 4528|app: 0|req: 1/1] 106.8.70.65 () {50 vars in 844 bytes} [Sat Sep 14 14:41:06 2019] GET / => generated 11707 bytes in 194 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+[pid: 4527|app: 0|req: 1/2] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 31 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4527|app: 0|req: 2/3] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4528|app: 0|req: 2/4] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/49/d7/49d7a025807c1082ada5abd00776cc5d.jpg => generated 20511 bytes in 5 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4528|app: 0|req: 3/5] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4527|app: 0|req: 3/6] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/b8/1d/b81d3e51278295e0998d8c90f070d80e.jpg => generated 25732 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4527|app: 0|req: 4/7] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4528|app: 0|req: 5/8] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/e7/66/e766b91924e9672e685465a048ace015.jpg => generated 17552 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4528|app: 0|req: 5/9] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4527|app: 0|req: 5/10] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4527|app: 0|req: 6/11] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4528|app: 0|req: 6/12] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4528|app: 0|req: 7/13] 106.8.70.65 () {46 vars in 829 bytes} [Sat Sep 14 14:41:06 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4527|app: 0|req: 7/14] 106.8.70.65 () {52 vars in 1009 bytes} [Sat Sep 14 14:41:09 2019] GET /video/detail/33/ => generated 6497 bytes in 71 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 4527|app: 0|req: 8/15] 106.8.70.65 () {48 vars in 963 bytes} [Sat Sep 14 14:41:09 2019] GET /upload/cache/ee/3a/ee3a209d79e6ba0f77f90dc47ce0cb0c.jpg => generated 16926 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4528|app: 0|req: 9/16] 106.8.70.65 () {50 vars in 1001 bytes} [Sat Sep 14 14:41:09 2019] GET /comment/get_comments/?video_id=33&page=1&page_size=15 => generated 43 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 4528|app: 0|req: 9/17] 106.8.70.65 () {50 vars in 983 bytes} [Sat Sep 14 14:41:09 2019] GET /upload/chunked_uploads/2019/08/20/86421eb04af6495aaa53852822c8db36.part => generated 50867094 bytes in 89 msecs via sendfile() (HTTP/1.1 200) 4 headers in 160 bytes (5 switches on core 1)
+[pid: 4527|app: 0|req: 9/18] 106.8.70.65 () {52 vars in 993 bytes} [Sat Sep 14 14:41:18 2019] GET / => generated 11708 bytes in 25 msecs (HTTP/1.1 200) 4 headers in 125 bytes (1 switches on core 0)
+[pid: 4527|app: 0|req: 10/19] 106.8.70.65 () {48 vars in 947 bytes} [Sat Sep 14 14:41:18 2019] GET /upload/cache/6c/30/6c30c19c2879989c18738a3193787ec7.jpg => generated 26768 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4528|app: 0|req: 10/20] 106.8.70.65 () {48 vars in 947 bytes} [Sat Sep 14 14:41:18 2019] GET /upload/cache/4a/48/4a48c538c84741ed825f6e8302e042c2.jpg => generated 28772 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4528|app: 0|req: 11/21] 106.8.70.65 () {48 vars in 947 bytes} [Sat Sep 14 14:41:18 2019] GET /upload/cache/01/45/014528f0c5d590a1d18ffee6e17c7522.jpg => generated 27591 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4527|app: 0|req: 11/22] 106.8.70.65 () {48 vars in 947 bytes} [Sat Sep 14 14:41:18 2019] GET /upload/cache/2c/2c/2c2cc2373a70e4ea9fc6152325966128.jpg => generated 22257 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4527|app: 0|req: 12/23] 106.8.70.65 () {48 vars in 947 bytes} [Sat Sep 14 14:41:18 2019] GET /upload/cache/be/4d/be4d88163b2181c0e011b22f671d6248.jpg => generated 27975 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4528|app: 0|req: 12/24] 106.8.70.65 () {48 vars in 947 bytes} [Sat Sep 14 14:41:18 2019] GET /upload/cache/13/60/13608881e1d66567002f10ef75e18330.jpg => generated 16518 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4528|app: 0|req: 13/25] 106.8.70.65 () {48 vars in 947 bytes} [Sat Sep 14 14:41:18 2019] GET /upload/cache/44/5b/445b9f84e4b38c72f2da808e1f3f34ed.jpg => generated 25651 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+[pid: 4527|app: 0|req: 13/26] 106.8.70.65 () {48 vars in 947 bytes} [Sat Sep 14 14:41:18 2019] GET /upload/cache/35/9c/359c5f45741f9bca4d6348370b1a9c16.jpg => generated 18453 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 0)
+[pid: 4527|app: 0|req: 14/27] 106.8.70.65 () {48 vars in 947 bytes} [Sat Sep 14 14:41:18 2019] GET /upload/cache/ee/48/ee48c7dbb981d51c0fdda5ae1a7f4ab6.jpg => generated 11982 bytes in 0 msecs via sendfile() (HTTP/1.1 200) 4 headers in 143 bytes (0 switches on core 1)
+...brutally killing workers...
+[deadlock-detector] a process holding a robust mutex died. recovering...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /root
+uwsgi_reload()/chdir(): Permission denied [core/master_utils.c line 453]
+closing all non-uwsgi socket fds > 2 (max_fd = 65535)...
+found fd 3 mapped to socket 0 (127.0.0.1:9001)
+running /usr/local/python3/bin/uwsgi
+[uWSGI] getting INI configuration from /opt/videoproject/uwsgi.ini
+*** Starting uWSGI 2.0.18 (64bit) on [Sat Sep 14 14:41:44 2019] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-36) on 06 September 2019 02:55:06
+os: Linux-3.10.0-957.21.3.el7.x86_64 #1 SMP Tue Jun 18 16:35:19 UTC 2019
+nodename: cwx790345-django
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /opt/videoproject
+detected binary path: /usr/local/python3/bin/uwsgi
+chdir() to /opt/videoproject
+your processes number limit is 3872
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uwsgi socket 0 inherited INET address 127.0.0.1:9001 fd 3
+Python version: 3.7.0 (default, Sep  6 2019, 10:41:10)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+Python main interpreter initialized at 0x1c48610
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 299280 bytes (292 KB) for 4 cores
+*** Operational MODE: preforking+threaded ***
+===============install pymysql==============
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x1c48610 pid: 4520 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 4520)
+spawned uWSGI worker 1 (pid: 5454, cores: 2)
+spawned uWSGI worker 2 (pid: 5455, cores: 2)
