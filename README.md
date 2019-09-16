@@ -1,0 +1,2 @@
+# videoproject
+nginx,uwsgi,django
