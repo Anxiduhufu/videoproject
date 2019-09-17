@@ -3,6 +3,8 @@
 依赖Python3.7.nginx，MySQL
 
 nginx配置文件示例
+
+
  upstream django {
     server 127.0.0.1:9001;
    }
